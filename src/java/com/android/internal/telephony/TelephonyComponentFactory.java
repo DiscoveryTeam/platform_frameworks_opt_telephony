@@ -71,6 +71,10 @@ public class TelephonyComponentFactory {
                 Constructor custMethod = cls.getConstructor();
                 Rlog.d(LOG_TAG, "constructor method = " + custMethod);
                 sInstance = (TelephonyComponentFactory) custMethod.newInstance();
+            } catch (NoClassDefFoundError e) {
+                e.printStackTrace();
+                Rlog.e(LOG_TAG, "error loading TelephonyComponentFactory");
+                sInstance = new TelephonyComponentFactory();
             } catch (Exception  e) {
                 e.printStackTrace();
                 Rlog.e(LOG_TAG, "Error loading TelephonyComponentFactory");
