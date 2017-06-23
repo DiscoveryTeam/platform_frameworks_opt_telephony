@@ -1086,7 +1086,8 @@ public class GsmCdmaPhone extends Phone {
                 && isEmergency
                 && alwaysTryImsForEmergencyCarrierConfig
                 && ImsManager.getInstance(mContext, mPhoneId).isNonTtyOrTtyOnVolteEnabledForSlot()
-                && imsPhone.isImsAvailable();
+                && imsPhone.isImsAvailable()
+                && (imsPhone.getServiceState().getState() != ServiceState.STATE_POWER_OFF);
 
         String dialPart = PhoneNumberUtils.extractNetworkPortionAlt(PhoneNumberUtils.
                 stripSeparators(dialString));
